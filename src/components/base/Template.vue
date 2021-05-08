@@ -1,5 +1,5 @@
 <template>
-  <div>Template Component</div>
+  <div class="wrapper">Template Component</div>
 </template>
 
 <script lang="ts">
@@ -12,4 +12,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.wrapper {
+  padding: 12px;
+  border: 1px dashed #42b983;
+}
 </style>
