@@ -5,12 +5,8 @@
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
 export default defineComponent({
-  name: 'HelloWorld',
+  name: 'Template',
   props: {
-    msg: {
-      type: String,
-      required: true
-    }
   },
   setup: () => {
     const count = ref(0)
