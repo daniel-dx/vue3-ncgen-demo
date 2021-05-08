@@ -91,15 +91,25 @@ export default {
       },
 
       // Update files. Path supports glob: https://github.com/isaacs/node-glob#glob-primer
-      updateFiles: {
-        "src/App.vue": function (content, options) {
-          const answers = this.$answers;
-          return api.insertBefore(content, {
-            "// <!-- Don't touch me - import component -->": `import answers.nameObj.upperFirstCamelCase from './components/${answers.category}/${answers.nameObj.upperFirstCamelCase.vue}'`,
-            "// <!-- Don't touch me - register component -->": `${answers.nameObj.upperFirstCamelCase.vue},`,
-            "<!-- Don't touch me - place component -->": `<${answers.nameObj.upperFirstCamelCase.vue}/>`
-          });
-        },
+      updateFiles: function () {
+        const answers = this.$answers;
+        return {
+          "src/App.vue": function (content, options) {
+            return api.insertBefore(content, {
+              "// <!-- Don't touch me - import component -->": `import ${answers.nameObj.upperFirstCamelCase} from './components/${answers.category}/${answers.nameObj.upperFirstCamelCase}.vue'`,
+              "// <!-- Don't touch me - register component -->": `${answers.nameObj.upperFirstCamelCase},`,
+              "<!-- Don't touch me - place component -->": `<${answers.nameObj.upperFirstCamelCase}/>`,
+            });
+          },
+          [`src/components/${answers.category}/${answers.nameObj.upperFirstCamelCase}.vue`]: function (
+            content,
+            options
+          ) {
+            return api.replace(content, {
+              Template: `${answers.nameObj.upperFirstCamelCase}`,
+            });
+          },
+        };
       },
 
       // Delete Files. Path supports glob: https://github.com/isaacs/node-glob#glob-primer
