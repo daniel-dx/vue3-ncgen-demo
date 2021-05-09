@@ -1,12 +1,12 @@
 import { api, log, _ } from "ncgen";
 
 export default {
-  // The main command. Used to generate project scaffolding
+  // The main command. Used to generate project scaffolding. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#main
   main: {
-    // Show welcome message
+    // Show welcome message. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#welcome
     welcome: "Welcome to use (Vue 3 + TypeScript + Vite) project generator",
 
-    // Ask questions. reference: https://github.com/SBoudrias/Inquirer.js/#question
+    // Ask questions. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#prompt
     prompt: [
       {
         type: "input",
@@ -15,10 +15,10 @@ export default {
       },
     ],
 
-    // Source of project template.reference: https://github.com/daniel-dx/degit
+    // Source of project template. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#tmplsource
     tmplSource: "https://github.com/daniel-dx/vue3-ncgen-demo.git",
 
-    // Update files. Path supports glob: https://github.com/isaacs/node-glob#glob-primer
+    // Update files. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#updatefiles
     updateFiles: {
       "package.json": function (content, options) {
         const answers = this.$answers
@@ -29,28 +29,28 @@ export default {
       },
     },
 
-    // Delete Files. Path supports glob: https://github.com/isaacs/node-glob#glob-primer
+    // Delete Files. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#removefiles
     removeFiles: ["ncgen-config.js", "src/components/base/Template.vue"],
 
-    // Install dependencies
+    // Install dependencies. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#installdependencies
     installDependencies: {
       skip: false,
       tips: "Dependencies are being installed, it may take a few minutes",
       command: "npm i",
     },
 
-    // Completion prompt message
+    // Completion prompt message. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#complete
     complete: "Congratulations, the operation is successful",
   },
 
-  // Subcommand. Used to insert fragment module code
+  // Subcommand. Used to insert fragment module code. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#sub
   sub: {
     // key is the name of the subcommand
     "add-component": {
-      // Subcommand description
+      // Subcommand description. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#description
       description: "Add vue component",
 
-      // Ask questions. reference: https://github.com/SBoudrias/Inquirer.js/#question
+      // Ask questions. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#prompt-2
       prompt: [
         {
           type: "list",
@@ -71,10 +71,10 @@ export default {
         },
       ],
 
-      // Source of project template.reference: https://github.com/daniel-dx/degit
+      // Source of project template. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#tmplsource-2
       tmplSource: "https://github.com/daniel-dx/vue3-ncgen-demo.git",
 
-      // Insert the specified files into the specified location
+      // Insert the specified files into the specified location. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#addfilesto
       addFilesTo: function () {
         const answers = this.$answers;
         return {
@@ -82,7 +82,7 @@ export default {
         };
       },
 
-      // Add files directly.
+      // Add files directly. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#addfiles
       addFiles: function () {
         const answers = this.$answers;
         return {
@@ -92,7 +92,7 @@ export default {
         };
       },
 
-      // Update files. Path supports glob: https://github.com/isaacs/node-glob#glob-primer
+      // Update files. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#updatefiles-2
       updateFiles: function () {
         const answers = this.$answers;
         return {
@@ -114,10 +114,10 @@ export default {
         };
       },
 
-      // Delete Files. Path supports glob: https://github.com/isaacs/node-glob#glob-primer
+      // Delete Files. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#removefiles-2
       removeFiles: [],
 
-      // Completion prompt message
+      // Completion prompt message. Doc: https://daniel-dx.github.io/ncgen/CONFIG.html#complete-2
       complete: "Congratulations, the operation is successful",
     },
   },
