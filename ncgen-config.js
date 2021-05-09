@@ -21,8 +21,10 @@ export default {
     // Update files. Path supports glob: https://github.com/isaacs/node-glob#glob-primer
     updateFiles: {
       "package.json": function (content, options) {
+        const answers = this.$answers
         return api.replace(content, {
-          "Daniel.xiao": this.$answers.author,
+          "vue3-ncgen-demo": answers.projectNameObj.kebabCase,
+          "Daniel.xiao": answers.author,
         });
       },
     },
