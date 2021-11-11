@@ -1,19 +1,25 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <ProductList msg="Hello Vue 3 + TypeScript + Vite" />
+  <ProductDetail msg="Hello Vue 3 + TypeScript + Vite" />
+  <ProductForm msg="Hello Vue 3 + TypeScript + Vite" />
   <!-- Don't touch me - place component -->
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from './components/busi/HelloWorld.vue'
+import ProductList from './components/ProductList.vue'
+import ProductForm from './components/ProductForm.vue'
+import ProductDetail from './components/ProductDetail.vue'
 // <!-- Don't touch me - import component -->
 
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld,
+    ProductList,
+    ProductDetail,
+    ProductForm
     // <!-- Don't touch me - register component -->
   }
 })
